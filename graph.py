@@ -24,6 +24,6 @@ C = (graph.subgraph(c) for c in nx.connected_components(graph))
 for g in C:
     c = [random.random()] * nx.number_of_nodes(g)  # random color...
     nx.draw(g, pos, node_size=40, node_color=c, vmin=0.0, vmax=1.0, with_labels=False)
-plt.show()
+#plt.show()
 
-#plt.savefig("Graph2.png", format="PNG")
+plt.savefig("business_owneragent_plot.png", format="PNG")
