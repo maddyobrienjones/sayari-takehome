@@ -6,6 +6,6 @@
 
 **graph.py** - Code used to create a NetworkX graph of the business, agent and owner data, and to plot that data
 
-**business_owneragent_plot.png** - Graph plot code
+**business_owneragent_plot.png** - Graph plot (also below)
 
-![Business/Agent/Owner Relationship Plot](https://github.com/maddyobrienjones/sayari-takehome/blob/main/business_owneragent_plot.png)
+![Business/Agent/Owner Relationship Plot](https://github.com/maddyobrienjones/sayari-takehome/blob/main/business_owneragent_plot.png | width=200)
