@@ -8,4 +8,6 @@
 
 **business_owneragent_plot.png** - Graph plot (also below)
 
+As shown in the graph below, it seems that many of the businesses are small and independent. However, there are a few registered agents who are connected to many businesses.
+
 ![Business/Agent/Owner Relationship Plot](https://github.com/maddyobrienjones/sayari-takehome/blob/main/business_owneragent_plot.png)
