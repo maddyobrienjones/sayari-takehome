@@ -8,4 +8,4 @@
 
 **business_owneragent_plot.png** - Graph plot (also below)
 
-![Business/Agent/Owner Relationship Plot](https://github.com/maddyobrienjones/sayari-takehome/blob/main/business_owneragent_plot.png =250x250)
+![Business/Agent/Owner Relationship Plot](https://github.com/maddyobrienjones/sayari-takehome/blob/main/business_owneragent_plot.png)
