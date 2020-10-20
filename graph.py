@@ -4,6 +4,7 @@ import pandas as pd
 from networkx.drawing.nx_pydot import graphviz_layout
 from networkx.generators.atlas import graph_atlas_g
 import random
+import numpy as np
 
 df = pd.read_csv("request_data.csv")
 df = df[["NAME", "Registered Agent", "Commercial Registered Agent", "Owners", "Unnamed: 21"]]
@@ -13,16 +14,21 @@ loop_columns = ["Registered Agent", "Commercial Registered Agent", "Owners", "Un
 # businesses and registered agents/owners
 graph_df = df.set_index("NAME").stack(dropna=True).reset_index()
 graph_df = graph_df[["NAME", 0]]
-graph_df.columns = ["Business", "Owner/Agent"]
-graph = nx.from_pandas_edgelist(graph_df, "Business", "Owner/Agent")
+graph_df.columns = ["source", "target"]
+graph = nx.from_pandas_edgelist(graph_df, "source", "target")
 
-# setting up plot to label nodes if degree is greater than 1
+for i in range(len(loop_columns)-1):
+    graph.add_edges_from(zip(df[loop_columns[i]], df[loop_columns[i+1]]))
+
+graph.remove_node(np.nan)
+
+# setting up plot to label nodes if degree is greater than 2
 # to detect whether there are any agents tied to many companies
-# or companies tied to many agents
-# will be easy to tell company or agent because all companies start with X
+# using degree of 3 as minimum because some companies have both an owner and
+# registered agent, and will make the graph cluttered
 labels = {}
 for node in graph.nodes():
-    if graph.degree[node] > 1:
+    if graph.degree[node] > 2:
         # to get rid of addresses in agent information
         labels[node] = node.split("\n")[0]
 
