@@ -6,9 +6,10 @@ from networkx.generators.atlas import graph_atlas_g
 import random
 import numpy as np
 
+# importing data and getting rid of extraneous columns
 df = pd.read_csv("request_data.csv")
 df = df[["NAME", "Registered Agent", "Commercial Registered Agent", "Owners", "Unnamed: 21"]]
-loop_columns = ["Registered Agent", "Commercial Registered Agent", "Owners", "Unnamed: 21"]
+loop_columns = df.columns[1:]
 
 # convert dataframe of business information to list of edges between
 # businesses and registered agents/owners
@@ -17,9 +18,11 @@ graph_df = graph_df[["NAME", 0]]
 graph_df.columns = ["source", "target"]
 graph = nx.from_pandas_edgelist(graph_df, "source", "target")
 
+# add edges between agents and owners
 for i in range(len(loop_columns)-1):
     graph.add_edges_from(zip(df[loop_columns[i]], df[loop_columns[i+1]]))
 
+# to get rid of edges between a node and nothing added by the above loop
 graph.remove_node(np.nan)
 
 # setting up plot to label nodes if degree is greater than 2
