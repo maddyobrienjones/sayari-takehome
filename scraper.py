@@ -1,9 +1,6 @@
 import requests
 import json
-import pprint
 import pandas as pd
-import matplotlib.pyplot as plt
-import networkx as nx
 
 # sending post request to the API using the request details shown in the site's network activity when searching
 req = requests.post("https://firststop.sos.nd.gov/api/Records/businesssearch",
